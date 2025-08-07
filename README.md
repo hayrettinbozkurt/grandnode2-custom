@@ -1,227 +1,260 @@
-<p align="center">
-  <a href="https://grandnode.com/">
-    <img src="https://grandnode.com/logo.png" alt="GrandNode - Open Source E-Commerce Platform">
-  </a>
+# Order Creation API
 
-  <h1 align="center">OPEN-SOURCE E-COMMERCE PLATFORM
-    <br />
-    FREE, FAST, FLEXIBLE, FEATURE-RICH</h1>
-     <p align="center">
-    GrandNode is a powerful, scalable e-Commerce platform built with MongoDB and ASP.NET Core. <br />
-Based on the modern MongoDB database, this fully open-source system supports multiple business models: <br />
-  B2B, B2C, Multi-Store, Multi-Vendor, Multi-Tenant, Multi-Language, Multi-Currency. <br />
-Achieve superior performance, unlimited scalability, and comprehensive customization to drive your online business success.
-  </p>
-  <p align="center">
-    <a href="https://grandnode.com/?utm_source=github&utm_medium=link&utm_campaign=readme"><strong>Explore the project »</strong></a>
-    <br />
-    <br />
-    <a href="https://demo.grandnode.com/?utm_source=github&utm_medium=link&utm_campaign=readme">View Demo</a>
-    ·
-    <a href="https://github.com/grandnode/grandnode2/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/grandnode/grandnode2/issues">Request Feature</a>
-    ·
-    <a href="https://grandnode.com/boards/?utm_source=github&utm_medium=link&utm_campaign=readme">Visit forum</a>
-    ·
-    <a href="https://grandnode.com/grandnode-themes/?utm_source=github&utm_medium=link&utm_campaign=readme">Themes</a>
-    ·
-    <a href="https://grandnode.com/extensions/?utm_source=github&utm_medium=link&utm_campaign=readme">Integrations & Plugins</a>
-    ·
-    <a href="https://grandnode.com/premium-support-packages/?utm_source=github&utm_medium=link&utm_campaign=readme">Premium support</a>
-  </p>
-</p>
-<div align="center">
+This API provides functionality to create orders in the GrandNode system via a POST request.
 
-![Tests on Linux, MacOS and Windows](https://github.com/grandnode/grandnode2/actions/workflows/aspnetcore.yml/badge.svg)
-[![Build Status](https://dev.azure.com/grandnode/grandnode2/_apis/build/status/grandnode.grandnode2?branchName=main)](https://dev.azure.com/grandnode/grandnode2/_build/latest?definitionId=8&branchName=main)
-[![Docker Image CI](https://github.com/grandnode/grandnode2/actions/workflows/docker-image.yml/badge.svg)](https://github.com/grandnode/grandnode2/actions/workflows/docker-image.yml)
-![License](https://img.shields.io/github/license/grandnode/grandnode2)
-[![CodeQL Advanced](https://github.com/grandnode/grandnode2/actions/workflows/codeql.yml/badge.svg)](https://github.com/grandnode/grandnode2/actions/workflows/codeql.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=grandnode_grandnode2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=grandnode_grandnode2)
-<a href="https://docs.grandnode.com/"><img src="https://img.shields.io/badge/Docs-docs.grandnode.com-brightgreen"></a>
-</div>
+## Endpoint
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-* [Overview](#Overview)
-* [Key Features](#key-features)
-* [Technical Highlights](#technical-highlights)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-  * [Online demo](#online-demo)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [Sponsors](#sponsors)
-* [Why Choose GrandNode?](#why-choose-grandnode)
-* [License](#license)
-
-
-## Overview
-
-GrandNode was designed to solve the most important business challenges from the world of digital shopping. The goal for us is to provide the platform with:
-* The high performance front-end, rendered within miliseconds,
-* The high performance application to handle temporary and permanent traffic overloads,
-* Highly advanced e-commerce platform with unlimited possibilities of integration with existing third-party softwares
-* Fast development with modern codebase
-* Scalable e-commerce platform to grow with the business
-
-## Key Features
-
-### Performance & Architecture
-- ⚡ **High-Performance** - Pages render in milliseconds
-- 📊 **MongoDB Database** - Superior scalability and performance
-- 🚀 **ASP.NET Core** - Modern and efficient codebase
-
-### Business Features
-- 🏪 **Multi-Store Management** - Run multiple stores from one installation
-- 👥 **B2B & B2C Support** - Serve both business and consumer customers
-- 🌎 **Multi-Language & Multi-Currency** - Sell globally with localized experiences
-- 🛒 **Advanced Product Catalog** - Flexible product attributes, variants, and pricing
-- 💰 **Multiple Payment Gateways** - Including Stripe, BrainTree and more
-- 🚚 **Customizable Shipping Options** - Fixed rate, by weight, shipping points
-- 📱 **Mobile-Optimized** - Responsive design for all devices
-
-### Marketing & SEO
-- 🔍 **SEO-Friendly** - URL structure, meta tags, and sitemap generation
-- 🔔 **Customer Segmentation** - Target specific customer groups
-- 📧 **Email Marketing Integration** - Boost your sales with newsletters
-- 📊 **Analytics Integration** - Track performance with Google Analytics
-
-## Technical Highlights
-
-GrandNode 2 leverages the latest technologies to deliver a high-performance e-commerce solution:
-
-- **ASP.NET Core 9.0** - Modern, cross-platform framework
-- **MongoDB 4.0+** - NoSQL database for unlimited scalability
-- **Docker Support** - Easy deployment and containerization
-- **REST API** - Comprehensive API for integrations
-- **Cloud-Ready** - Optimized for cloud hosting environments
-- **Real-time Processing** - Immediate updates throughout the system
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites (develop version)
-
-GrandNode requires .NET Core 9.0, MongoDB 4.0+, and OS-specific dependency tools. 
-
-### Installation
-
-GrandNode can be installed in a few different ways. Note: The develop branch is the development version of GrandNode and it may be unstable. The main branch is the primary branch that contains the latest stable version. You can also download specific stable versions from the Releases page or switch to a release branch.
-
-* Docker 
-```bash
-docker run -d -p 127.0.0.1:27017:27017 --name mongodb mongo 
-docker run -d -p 80:8080 --name grandnode2 --link mongodb:mongo -v grandnode_images:/app/wwwroot/assets/images -v grandnode_appdata:/app/App_Data grandnode/grandnode2
-``` 
-If you want to download the latest stable version of GrandNode please use the following command, where x.xx is a number of GrandNode release: 
-```bash
-docker pull grandnode/grandnode2:x.xx 
+```
+POST /api/order
 ```
 
-* Open locally with VS2022+ (v17.12.0) or above
-
-Run the project in the Visual Studio 2022+, extract the source code package downloaded from Releases tab to a folder. Enter the extracted folder and double-click the GrandNode.sln solution file. Select the Plugins project, rebuild it, then select the GrandNode.Web project.
-
-* Host on Linux server 
-
-Before you start - please install, configure the nginx server, .NET Core 9.0+ and MongoDB 4.0+
-```bash
-mkdir ~/source
-cd ~/source
-git clone - b x.xx https://github.com/grandnode/grandnode2.git
+### Content-Type
 ```
-```bash
-cd ~/source/grandnode
-dotnet restore GrandNode.sln
+application/json
 ```
-Now it's time to rebuild all of our plugins and publish application (command is pretty long because we've combined all commands in a single line, to ease up your work):
-```bash
-sudo dotnet build src/Plugins/Authentication.Facebook && sudo dotnet build src/Plugins/Authentication.Google && sudo dotnet build src/Plugins/DiscountRules.Standard && sudo dotnet build src/Plugins/ExchangeRate.McExchange && sudo dotnet build src/Plugins/Payments.BrainTree && sudo dotnet build src/Plugins/Payments.CashOnDelivery && sudo dotnet build src/Plugins/Payments.StripeCheckout && sudo dotnet build src/Plugins/Shipping.ByWeight && sudo dotnet build src/Plugins/Shipping.FixedRateShipping && sudo dotnet build src/Plugins/Shipping.ShippingPoint && sudo dotnet build src/Plugins/Tax.CountryStateZip && sudo dotnet build src/Plugins/Tax.FixedRate && sudo dotnet build src/Plugins/Widgets.FacebookPixel && sudo dotnet build src/Plugins/Widgets.GoogleAnalytics && sudo dotnet build src/Plugins/Widgets.Slider && sudo dotnet build src/Plugins/Theme.Modern && sudo dotnet publish src/Web/Grand.Web -c Release -o /var/webapps/grandnode 
+
+---
+
+## Request Body
+
+```json
+{
+    "page": 0,
+    "size": 50,
+    "totalPages": 1,
+    "totalElements": 1,
+    "content": [
+        {
+            "shipmentAddress": {
+                "id": 80844024,
+                "firstName": "Trendyol",
+                "lastName": "Müşterisi",
+                "company": "",
+                "address1": "DSM Grup Danışmanlık İletişim ve Satış Tic. A.Ş. Büyükdere Caddesi Noramin İş Merkezi No:237 Kat:B1 ",
+                "address2": "",
+                "addressLines": {
+                    "addressLine1": "xxx",
+                    "addressLine2": "xxx"
+                },
+                "city": " İstanbul ",
+                "cityCode": 34,
+                "district": "Şişli",
+                "districtId": 54,
+                "countyId": 0, // CEE bölgesi için gelecektir.
+                "countyName": "XXX", // CEE bölgesi için gelecektir.
+                "shortAddress": "xxx", // GULF bölgesi için gelecektir.
+                "stateName": "xxx", // GULF bölgesi için gelecektir.
+                "postalCode": "10D",        
+                "countryCode": "TR",
+                "neighborhoodId": 32126,
+                "neighborhood": "Beyazıt Mah",
+                "phone": null,
+                "fullName": "Trendyol Müşterisi",
+                "fullAddress": "DSM Grup Danışmanlık İletişim ve Satış Tic. A.Ş. Büyükdere Caddesi Noramin İş Merkezi No:237 Kat:B1   Şişli  İstanbul "
+            },
+            "orderNumber": "80869231",
+            "grossAmount": 51.98,
+            "totalDiscount": 25.99,
+            "totalTyDiscount": 0.00, // commercial true olduğu durumda dolu gelebilir, false olduğu durumda 0 dönecektir.
+            "taxNumber": null,
+            "invoiceAddress": {
+                "id": 80844023,
+                "firstName": "Trendyol",
+                "lastName": "Müşterisi",
+                "company": "", // GULF bölgesi siparişlerinde boş gelebilir.
+                "address1": "DSM Grup Danışmanlık İletişim ve Satış Tic. A.Ş. Büyükdere Caddesi Noramin İş Merkezi No:237 Kat:B1 ",
+                "address2": "", // GULF bölgesi siparişlerinde boş gelebilir.
+                "addressLines": {
+                    "addressLine1": "xxx",
+                    "addressLine2": "xxx"
+                },
+                "city": " İstanbul ",
+                "district": "Şişli", // GULF bölgesi siparişlerinde boş gelebilir.
+                "districtId": 1234,
+                "countyId": 0, // CEE bölgesi için gelecektir.
+                "countyName": "XXX", // CEE bölgesi için gelecektir.
+                "shortAddress": "xxx", // GULF bölgesi için gelecektir.
+                "stateName": "xxx", // GULF bölgesi için gelecektir.
+                "postalCode": "", // GULF bölgesi siparişlerinde boş gelebilir.
+                "countryCode": "TR",
+                "neighborhoodId": 32126,
+                "neighborhood": "Beyazıt Mah",
+                "phone": null,
+                "fullName": "Trendyol Müşterisi",
+                "fullAddress": "DSM Grup Danışmanlık İletişim ve Satış Tic. A.Ş. Büyükdere Caddesi Noramin İş Merkezi No:237 Kat:B1   Şişli  İstanbul",
+                "taxOffice": "Company of OMS's Tax Office", // Kurumsal fatura olmadığı durumda (commercial=false ise) body içerisinde dönmeyecektir.
+                "taxNumber": "Company of OMS's Tax Number" // Kurumsal fatura olmadığı durumda (commercial=false ise)) body içerisinde dönmeyecektir.
+            },
+            "customerFirstName": "Trendyol",
+            "customerEmail": "pf+dym24k@trendyolmail.com",
+            "customerId": 99993706,
+            "customerLastName": "Müşterisi",
+            "id": 11650604, //shipmentPackageId
+            "cargoTrackingNumber": 7340447182689,
+            "cargoTrackingLink": "https://kargotakip.trendyol.com/?token=",
+            "cargoSenderNumber": "733861966410",
+            "cargoProviderName": "Trendyol Express Marketplace",
+            "lines": [
+                {
+                    "quantity": 2,
+                    "salesCampaignId": 201642,
+                    "productSize": " one size",
+                    "merchantSku": "merchantSku",
+                    "productName": "Kadın Çivit Mavi Geometrik Desenli Kapaklı Clutch sku1234 sku1234, one size",
+                    "productCode": 11954798,
+                    "productOrigin": "Tr",
+                    "merchantId": 201,
+                    "amount": 25.99,
+                    "discount": 13.00,
+                    "tyDiscount": 0.00, // commercial true olduğu durumda dolu gelebilir, false olduğu durumda 0 dönecektir.
+                    "discountDetails": [
+                        {
+                            "lineItemPrice": 13.00,
+                            "lineItemDiscount": 12.99,
+                            "lineItemTyDiscount": 0.00 // commercial true olduğu durumda dolu gelebilir, false olduğu durumda 0 dönecektir.
+                        },
+                        {
+                            "lineItemPrice": 12.99,
+                            "lineItemDiscount": 13.00,
+                            "lineItemTyDiscount": 0.00 // commercial true olduğu durumda dolu gelebilir, false olduğu durumda 0 dönecektir.
+                        }
+                    ],
+                    "fastDeliveryOptions": [
+                        {
+                            "type": "SameDayShipping"
+                        },
+                        {
+                            "type": "FastDelivery"
+                        }
+                    ],
+                    "currencyCode": "TRY",
+                    "productColor": "No Color",
+                    "id": 56040534, // orderLineId
+                    "sku": "sku1234",
+                    "vatBaseAmount": 8,
+                    "barcode": "barcode1234",
+                    "orderLineItemStatusName": "ReturnAccepted",
+                    "price": 12.99,
+                    "productCategoryId": 11111,
+                    "laborCost": 11.11
+                }
+            ],
+            "orderDate": 1542801149863,
+            "tcIdentityNumber": "99999999999",
+            "identityNumber": "0000000000000",
+            "currencyCode": "TRY",
+            "packageHistories": [
+                {
+                    "createdDate": 1542790350607,
+                    "status": "Created"
+                },
+                {
+                    "createdDate": 1543789070462,
+                    "status": "Delivered"
+                },
+                {
+                    "createdDate": 1542872460911,
+                    "status": "Picking"
+                },
+                {
+                    "createdDate": 1542953901874,
+                    "status": "Shipped"
+                }
+            ],
+            "shipmentPackageStatus": "ReturnAccepted",
+            "status": "Shipped",
+            "deliveryType": "normal", // her zaman "normal" olarak dönecektir
+            "timeSlotId": 0,
+            "scheduledDeliveryStoreId": "",
+            "estimatedDeliveryStartDate": 1614605119000,
+            "estimatedDeliveryEndDate": 1615296319000,
+            "totalPrice": 469.90,
+            "deliveryAddressType": "Shipment",
+            "agreedDeliveryDate": 1622549842955, // Ürüne belirtilmiş termin süresinden hesaplanan siparişin gecikmeden kargoya verilmesi için son gündür.
+            "agreedDeliveryDateExtendible": true, // true/fale satıcı ek süre girebilir mi bilgisidir.
+            "extendedAgreedDeliveryDate": 1615296319000, // satıcı ek süre istedikten sonra hesaplanan yeni süredir. Ek süre girilmemişse null dönecektir.
+            "agreedDeliveryExtensionStartDate": 1615296319000, // ek süre girilebilmeye başladığı tarih / agreedDeliveryDateExtendible false ise null dönecektir.
+            "agreedDeliveryExtensionEndDate": 1615296319000, // ek süre girilebilmesi için son tarih / agreedDeliveryDateExtendible false ise null dönecektir.
+            "invoiceLink": "",
+            "fastDelivery": true,
+            "fastDeliveryType": "FastDelivery", // Haziran 2022'den itibaren bu alan body içerisinde dönmeye başlayacaktır.
+            "originShipmentDate": 1542790350607, // Siparişin ilgili satıcıya aktarılma tarihidir. Muadil ürün süreçlerinde orderDate ile farklı olacağından bu alanın baz alınması gerekmektedir.
+            "lastModifiedDate": 1641210225935, // Sipariş paket statüsünün son güncellenme tarihidir.
+            "commercial": true, // Kurumsal fatura olmadığı durumda commercial=false dönecektir.
+            "deliveredByService": false, // Yetkili servis ile gönderim yaptığınız durumda true değeri dönecektir.
+            "micro": true, // Alan değeri true olduğunda ilgili sipariş mikro ihracat siparişi anlamına gelmektedir.
+            "giftBoxRequested": true, // Alan değeri true olduğunda ilgili sipariş için müşterinin hediye paketi talebi vardır.
+            "etgbNo": "243414X001232", // micro true olduğunda etgbNo alanı için bilgi dönecektir.
+            "etgbDate": 1705089600000, // micro true olduğunda etgbDate alanı için bilgi dönecektir.
+            "3pByTrendyol": false,
+            "containsDangerousProduct": true // micro ihracat siparişlerinde satıcıya gelen siparişte paket içerisinde herhangi bir tehlikeli ürün varsa pil, parfüm vb. gibi, true dönecektir.
+        }
+    ]
+}
 ```
-Optional: Create the service file, to automatically restart your application.
-```bash
-sudo vi /etc/systemd/system/grandnode.service
+
+---
+
+## Validation Rules
+
+### OrderDto
+- `content`: Zorunlu, en az bir adet `OrderContentDto` içermelidir.
+
+### OrderContentDto
+- `customerEmail`: Zorunlu, geçerli bir e-posta adresi olmalıdır.
+- `orderNumber`: Zorunlu.
+- `grossAmount`: Zorunlu, 0’dan büyük olmalıdır.
+- `totalPrice`: Zorunlu, 0’dan büyük olmalıdır.
+- `currencyCode`: Zorunlu.
+- `shipmentAddress`: Zorunlu, geçerli bir adres olmalıdır (bkz. ShipmentAddressDto).
+- `lines`: Zorunlu, en az bir ürün içermelidir (bkz. OrderLineDto).
+
+### OrderLineDto
+- `sku`: Zorunlu, boş olamaz. `SKU boş olamaz`
+- `quantity`: Zorunlu, 0’dan büyük olmalıdır. `Adet 0'dan büyük olmalı`
+- `price`: 0 veya daha büyük olmalıdır.
+- `productName`: Zorunlu.
+- `productCode`: Zorunlu, 0’dan büyük olmalıdır.
+- `currencyCode`: Zorunlu.
+
+### ShipmentAddressDto
+- `firstName`, `lastName`, `address1`, `city`, `district`, `postalCode`, `countryCode`, `fullAddress`: Her biri zorunludur ve boş olamaz.
+
+---
+
+## Response
+
+### Success - 201 Created
+
+```json
+{
+  "message": "Order Created",
+  "orderId": "ORDER-0001"
+}
 ```
-Paste the following content, and save changes:
-```ini
-[Unit]
-Description=GrandNode
 
-[Service]
-WorkingDirectory=/var/webapps/grandnode
-ExecStart=/usr/bin/dotnet /var/webapps/grandnode/Grand.Web.dll
-Restart=always
-RestartSec=10
-SyslogIdentifier=dotnet-grandnode
-User=www-data
-Environment=ASPNETCORE_ENVIRONMENT=Production
+### Failure - 400 Bad Request
 
-[Install]
-WantedBy=multi-user.target
+ 
+
+```json
+{
+  "error": "customerEmail must be a valid email address."
+}
 ```
-Enable the service and restart the GrandNode
-```
-sudo systemctl enable grandnode.service
-sudo systemctl start grandnode.service
-``` 
-Feel free to visit our [detailed guide about GrandNode installation.](https://grandnode.com/how-to-install-grandnode-on-linux-ubuntu-1604/?utm_source=github&utm_medium=link&utm_campaign=readme)
 
-### Online demo 
-#### Frontend #### 
-[https://demo.grandnode.com/](https://demo.grandnode.com/?utm_source=github&utm_medium=link&utm_campaign=readme)
+---
 
-#### Backend #### 
-[https://demo.grandnode.com/admin](https://demo.grandnode.com/admin/?utm_source=github&utm_medium=link&utm_campaign=readme) 
+## Error Handling
 
+- Doğrulama hataları (validation errors): `400 Bad Request`
 
-Demo is restoring once per day to the original state. 
+- Sistem hataları: `500 Internal Server Error`
 
-Access to the admin panel:
+---
 
-Admin email: admin@yourstore.com 
+## Notes
 
-Admin password: 123456
-
-
-## Roadmap
-
-We have a clear vision in which direction we would like to develop GrandNode. Ready roadmaps with milestones for future versions of GrandNode can be found in the [projects tab](https://github.com/grandnode/grandnode2/projects).
-
-
-## Contributing
-
-GrandNode is and always will be free and open-source.
-How to contribute:
-- Star this project on GitHub.
-- Report bugs or suggest features by creating new issues
-- Submit pull requests
-- Become a sponsor and donate to us
-
-## Sponsors
-
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/grandnode#sponsor)]
-
-## Why Choose GrandNode?
-
-GrandNode stands out in the crowded e-commerce platform market by offering:
-
-- **Superior Performance** - MongoDB and ASP.NET Core ensure lightning-fast page loads
-- **Ultimate Scalability** - From startup to enterprise, grow without limits
-- **Lower Total Cost of Ownership** - Free, open-source with no licensing costs
-- **Modern Technology Stack** - Built with future-proof technologies
-- **Extensible Architecture** - Build custom modules and integrations
-
-Whether you're launching a single online store or building a complex multi-vendor marketplace, GrandNode provides the tools and performance you need to succeed in today's competitive e-commerce landscape.
-
-## Code of conduct
-
-To clarify behavior rules in our community, GrandNode has adopted the code of conduct defined by the Contributor Covenant. For more information see the [Code of Conduct.](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
-
-## License
-GrandNode is completely free and distributed under the GNU General Public License v3.0. It's available [here](LICENSE)
+- Her sipariş `guest customer` olarak oluşturulur.
+- SKU doğrulaması yapılır. Mevcut olmayan ürünler siparişi geçersiz kılar.
+- Başarılı işlemlerde sipariş oluşturulur ve sipariş numarası döndürülür.
