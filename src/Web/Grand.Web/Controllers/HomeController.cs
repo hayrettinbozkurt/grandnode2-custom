@@ -10,6 +10,6 @@ public class HomeController : BasePublicController
     [HttpGet]
     public virtual IActionResult Index()
     {
-        return View();
+        return View("Index");
     }
 }

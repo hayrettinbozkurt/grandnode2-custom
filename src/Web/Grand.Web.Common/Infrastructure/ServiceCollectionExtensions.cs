@@ -204,7 +204,7 @@ public static class ServiceCollectionExtensions
         });
 
         //add view localization
-        mvcBuilder.AddViewLocalization();
+        mvcBuilder.AddViewLocalization().AddRazorRuntimeCompilation();
 
         var securityConfig = new SecurityConfig();
         configuration.GetSection("Security").Bind(securityConfig);

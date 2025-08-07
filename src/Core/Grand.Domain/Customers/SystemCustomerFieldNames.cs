@@ -20,6 +20,25 @@ public static class SystemCustomerFieldNames
     public static string VatNumberStatusId => "VatNumberStatusId";
     public static string PasswordToken => "PasswordToken";
 
+    // Address Attributes
+
+    public static string CityCode => "CityCode";
+    public static string District => "District";
+    public static string DistrictId => "DistrictId";
+    public static string CountryName => "CountryName";
+    public static string CountryCode => "CountryCode";
+    public static string ShortAddress => "ShortAddress";
+    public static string StateName => "StateName";
+    public static string NeighborhoodId => "NeighborhoodId";
+    public static string Neighborhood => "Neighborhood";
+    public static string FullName => "FullName";
+    public static string FullAddress => "FullAddress";
+
+    public static string TaxOffice => "TaxOffice";
+        public static string TaxNumber => "TaxNumber";
+        
+
+
     //Other attributes
     public static string DiscountCoupons => "DiscountCoupons";
     public static string GiftVoucherCoupons => "GiftVoucherCoupons";
@@ -40,6 +59,10 @@ public static class SystemCustomerFieldNames
     public static string PaymentOptionAttribute => "PaymentOptionAttribute";
 
     public static string SelectedShippingOption => "SelectedShippingOption";
+    public static string TcIdentityNumber => "TcIdentityNumber";
+public static string IdentityNumber => "IdentityNumber";
+
+
 
     //value customer chose "pick up in store" option
     public static string SelectedPickupPoint => "SelectedPickupPoint";

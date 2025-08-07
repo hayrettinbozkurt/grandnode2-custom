@@ -134,6 +134,8 @@ public class OrderItem : SubBaseEntity
 
     public IList<CustomAttribute> Attributes { get; set; } = new List<CustomAttribute>();
 
+    public IList<Dictionary<string, object>> CustomData { get; set; } = new List<Dictionary<string,object>>();
+
     /// <summary>
     ///     Gets or sets the download count
     /// </summary>

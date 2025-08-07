@@ -3,5 +3,6 @@
 public enum OrderItemStatus
 {
     Open = 0,
-    Close = 1
+    Close = 1, 
+    ReturnAccepted=2
 }

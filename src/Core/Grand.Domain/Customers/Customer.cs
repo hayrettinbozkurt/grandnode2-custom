@@ -26,7 +26,7 @@ public class Customer : BaseEntity
     /// <summary>
     ///     Gets or sets the customer Guid
     /// </summary>
-    public Guid CustomerGuid { get; set; }
+    public Guid CustomerGuid { get; set; } 
 
     /// <summary>
     ///     Gets or sets the username

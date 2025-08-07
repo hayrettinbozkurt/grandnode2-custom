@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Grand.Module.Api.Controllers;
 
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-[AuthorizeApiAdmin]
+//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+//[AuthorizeApiAdmin]
 [ServiceFilter(typeof(ModelValidationAttribute))]
 [Route($"{Configurations.RestRoutePrefix}/[controller]")]
 [ApiExplorerSettings(IgnoreApi = false, GroupName = "v1")]

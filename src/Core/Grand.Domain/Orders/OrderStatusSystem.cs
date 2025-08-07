@@ -23,5 +23,6 @@ public enum OrderStatusSystem
     /// <summary>
     ///     Cancelled
     /// </summary>
-    Cancelled = 40
+    Cancelled = 40,
+ 
 }
